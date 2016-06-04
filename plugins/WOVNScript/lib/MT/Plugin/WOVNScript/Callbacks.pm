@@ -18,9 +18,7 @@ sub build_page {
 
     my $user_token = $plugin->get_config_value('user_token');
     my $script_tag
-        = sprintf
-        qq{<script src="//j.wovn.io/1" data-wovnio="key=$user_token" async></script>},
-        $user_token;
+        = qq{<script src="//j.wovn.io/1" data-wovnio="key=$user_token" async></script>};
 
     if ( ( lc ${ $param{content} } ) =~ /(<\/(?:head|body|html)>)/m ) {
         my $end_tag = quotemeta $1;
