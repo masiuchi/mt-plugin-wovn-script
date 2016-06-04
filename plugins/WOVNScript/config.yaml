@@ -1,0 +1,19 @@
+name: WOVNScript
+version: 0.01
+
+description: <__trans phrase="Insert WOVN.io script tag to HTML.">
+plugin_link: https://github.com/masiuchi/mt-plugin-wovn-script
+
+author_name: Masahiro Iuchi
+author_link: https://github.com/masiuchi
+
+settings:
+  user_token:
+    default: ~
+    scopr: system
+
+system_config_template: system_config.tmpl
+
+callbacks:
+  build_page: $WOVNScript::MT::Plugin::WOVNScript::Callbacks::build_page
+
