@@ -7,12 +7,17 @@ use MT;
 sub build_page {
     my ( $cb, %param ) = @_;
 
+    my $plugin = MT->component('wovnscript');
+    unless ( $plugin && $plugin->get_config_value('user_token') ) {
+        return;
+    }
+
     if ( ( lc $param{file_info}->url ) !~ /\.html?$/ ) {
         return;
     }
 
-    my $plugin = MT->component('wovnscript');
-    unless ( $plugin && $plugin->get_config_value('user_token') ) {
+    if ( ( lc ${ $param{content} } ) =~ /<script\s+src="\/\/j\.wovn\.io\/"/m )
+    {
         return;
     }
 
